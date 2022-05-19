@@ -83,7 +83,7 @@ class Matrix {
    Matrix result = new Matrix(rows, b.cols);
     for (int i = 0; i < result.rows; i++)  {
       for (int j = 0; j < result.cols; j++)  {
-        int sum = 0;
+        double sum = 0;
         for (int k = 0; k < cols; k++)  {
           sum += data[i][k] * b.data[k][j];
         }
