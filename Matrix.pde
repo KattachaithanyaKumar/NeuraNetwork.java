@@ -1,4 +1,3 @@
-
 class Matrix {
   int rows = 1;
   int cols = 1;
@@ -43,7 +42,7 @@ class Matrix {
     }
   }
   
-  void addNum(int n)  {
+  void addNum(double n)  {
     for (int i = 0; i < rows; i++)  {
       for (int j = 0; j < cols; j++)  {
         data[i][j] += n;
@@ -64,7 +63,31 @@ class Matrix {
     }
   }
   
-  void multiplyNum(int n)  {
+  void subtractNum(double n)  {
+    for (int i = 0; i < rows; i++)  {
+      for (int j = 0; j < cols; j++)  {
+        data[i][j] -= n;
+      }
+    }
+  }
+  
+  Matrix subtractMatrix(Matrix b)  {
+    if (rows != b.rows || cols != b.cols)  {
+      println("ERROR: for subtraction rows and cols of A and B matrix should match!!");
+      exit();
+      return new Matrix(0,0);
+    }
+    
+    Matrix result = new Matrix(b.rows, b.cols);
+    for (int i = 0; i < rows; i++)  {
+      for (int j = 0; j < cols; j++)  {
+        result.data[i][j] = data[i][j] - b.data[i][j];
+      }
+    }
+    return result;
+  }
+  
+  void multiplyNum(double n)  {
     for (int i = 0; i < rows; i++)  {
       for (int j = 0; j < cols; j++)  {
         data[i][j] *= n;
@@ -79,6 +102,7 @@ class Matrix {
      println("A cols: " + cols);
      println("B rows: " + b.rows);
      exit();
+     return new Matrix(0,0);
    }  
    Matrix result = new Matrix(rows, b.cols);
     for (int i = 0; i < result.rows; i++)  {
@@ -94,7 +118,7 @@ class Matrix {
   }
   
   Matrix transpose()  {
-    Matrix result = new Matrix(cols, rows);
+    Matrix result = new Matrix(this.cols, this.rows);
     
     for (int i = 0; i < rows; i++)  {
       for (int j = 0; j < cols; j++)  {
