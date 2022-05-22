@@ -52,7 +52,7 @@ class Matrix {
   
   void addMatrix(Matrix n)  {
     if (rows != n.rows || cols != n.cols)  {
-      println("ERROR: rows and cols should match");
+      println("ERROR: for  adding two matrices rows and cols should match");
       exit();
     }else{
       for (int i = 0; i < rows; i++)  {
@@ -95,10 +95,19 @@ class Matrix {
     }
   }
   
+  void elimMult(Matrix a)  {
+    for (int i = 0; i < rows; i++)  {
+      for (int j = 0; j < cols; j++)  {
+        data[i][j] *= a.data[i][j];
+      }
+    }
+  }
+  
  
  Matrix multiply(Matrix b)  {
    if (cols != b.rows)  {
-     println("cols of a must match rows of b");
+     println("for multiplication of matrices cols of a must match rows of b");
+     println(b);
      println("A cols: " + cols);
      println("B rows: " + b.rows);
      exit();
